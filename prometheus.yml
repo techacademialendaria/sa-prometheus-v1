@@ -1,0 +1,19 @@
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+
+  - job_name: 'pgbouncer_front'
+    static_configs:
+      - targets: ['front-pgbouncer-exporter-production.up.railway.app']
+
+  - job_name: 'pgbouncer_worker'
+    static_configs:
+      - targets: ['worker-pgbouncer-exporter-production.up.railway.app']
+
+  - job_name: 'pgbouncer_back'
+    static_configs:
+      - targets: ['back-pgbouncer-exporter-production.up.railway.app']

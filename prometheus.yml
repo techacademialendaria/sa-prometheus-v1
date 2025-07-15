@@ -31,3 +31,8 @@ scrape_configs:
     scrape_interval: 15s
     static_configs:
       - targets: ['184.72.166.200:9273']
+      
+  - job_name: 'backup-postgres'
+    scrape_interval: 15s
+    static_configs:
+      - targets: ['20.42.96.205:9273']

@@ -26,3 +26,8 @@ scrape_configs:
     scrape_interval: 15s
     static_configs:
       - targets: ['44.209.67.85:9273']
+  
+  - job_name: 'telegraf-evo-go-2'
+    scrape_interval: 15s
+    static_configs:
+      - targets: ['184.72.166.200:9273']

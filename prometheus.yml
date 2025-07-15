@@ -22,7 +22,7 @@ scrape_configs:
     static_configs:
       - targets: ['postgres-exporter-prod-production.up.railway.app']
   
-  - job_name: 'telegraf-debian-backup'
+  - job_name: 'telegraf-evo-go-1'
     scrape_interval: 15s
     static_configs:
-      - targets: ['20.42.96.205:9273']
+      - targets: ['184.72.166.200:9273']

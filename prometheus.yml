@@ -4,7 +4,7 @@ global:
 scrape_configs:
   - job_name: 'prometheus'
     basic_auth:
-      username: superagentes
+      username: performance
       password_file: /tmp/self-password
     static_configs:
       - targets: ['localhost:9090']

@@ -1,0 +1,9 @@
+# This repository is public: credentials must never be committed (see .env.example)
+.env
+.env.*
+*.env
+!.env.example
+web.yml
+self-password
+
+.DS_Store

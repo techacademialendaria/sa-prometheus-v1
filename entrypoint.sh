@@ -14,8 +14,8 @@ umask 077
 printf 'basic_auth_users:\n  superagentes: "%s"\n' "$PROM_AUTH_HASH" > /tmp/web.yml
 printf '%s' "$PROM_AUTH_PASSWORD" > /tmp/self-password
 
-exec /bin/prometheus \
-  --config.file=/etc/prometheus/prometheus.yml \
-  --storage.tsdb.path=/prometheus \
-  --storage.tsdb.retention.time=30d \
-  --web.config.file=/tmp/web.yml
+# Authentication is always on: --web.config.file is added here and not in CMD,
+# so overriding the container arguments cannot turn it off by accident (passing
+# it again makes Prometheus refuse to start). Everything else comes from CMD or
+# from the arguments given to the container, as in the upstream image.
+exec /bin/prometheus --web.config.file=/tmp/web.yml "$@"

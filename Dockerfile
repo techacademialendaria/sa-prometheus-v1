@@ -6,4 +6,5 @@ COPY entrypoint.sh /etc/prometheus/entrypoint.sh
 ENTRYPOINT ["/bin/sh", "/etc/prometheus/entrypoint.sh"]
 CMD ["--config.file=/etc/prometheus/prometheus.yml", \
      "--storage.tsdb.path=/prometheus", \
-     "--storage.tsdb.retention.time=30d"]
+     "--storage.tsdb.retention.time=30d", \
+     "--web.enable-remote-write-receiver"]

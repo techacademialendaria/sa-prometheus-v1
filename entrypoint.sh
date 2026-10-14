@@ -31,7 +31,9 @@ if [ -n "${PROM_WRITE_USER:-}${PROM_WRITE_HASH:-}" ]; then
     performance) echo "PROM_WRITE_USER must not be performance" >&2; exit 1 ;;
     *[!a-z0-9_-]*) echo "PROM_WRITE_USER may only contain a-z, 0-9, _ and -" >&2; exit 1 ;;
   esac
-  printf '  %s: "%s"\n' "$PROM_WRITE_USER" "$PROM_WRITE_HASH" >> /tmp/web.yml
+  # Quoted so YAML reads the name as a string: unquoted, "null" becomes a null
+  # key that Prometheus drops, and that user gets 401 with the right password.
+  printf '  "%s": "%s"\n' "$PROM_WRITE_USER" "$PROM_WRITE_HASH" >> /tmp/web.yml
 fi
 
 # Authentication is always on: --web.config.file is added here and not in CMD,
